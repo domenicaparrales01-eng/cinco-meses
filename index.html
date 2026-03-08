@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestros 5 Meses</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(180deg,#0f0c29,#302b63,#24243e);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+animation:starsMove 200s linear infinite;
+z-index:-2;
+}
+
+@keyframes starsMove{
+from{background-position:0 0;}
+to{background-position:10000px 5000px;}
+}
+
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:float 8s linear infinite;
+opacity:0.8;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+
+header{
+padding:80px 20px;
+}
+
+h1{
+font-size:50px;
+color:#ff9edb;
+}
+
+.subtitle{
+font-size:20px;
+opacity:0.9;
+}
+
+.counter{
+font-size:24px;
+margin-top:15px;
+}
+
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:15px;
+transition:0.4s;
+cursor:pointer;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+
+.envelope{
+margin:50px auto;
+width:300px;
+height:220px;
+background:#ff6fa9;
+position:relative;
+border-radius:10px;
+cursor:pointer;
+}
+
+.flap{
+position:absolute;
+width:0;
+height:0;
+border-left:150px solid transparent;
+border-right:150px solid transparent;
+border-bottom:100px solid #ff9ec9;
+top:-100px;
+left:0;
+transition:1s;
+}
+
+.letter{
+position:absolute;
+background:white;
+color:#333;
+width:260px;
+padding:20px;
+left:20px;
+top:20px;
+border-radius:10px;
+opacity:0;
+transition:1s;
+}
+
+.open .flap{
+transform:rotateX(180deg);
+}
+
+.open .letter{
+top:-120px;
+opacity:1;
+}
+
+
+.timeline{
+max-width:600px;
+margin:auto;
+text-align:left;
+padding:20px;
+}
+
+.timeline div{
+background:#ffffff20;
+padding:15px;
+border-radius:10px;
+margin:10px 0;
+}
+
+
+button{
+background:#ff4fa3;
+border:none;
+color:white;
+padding:14px 30px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#ff2d8c;
+}
+
+.section{
+padding:40px 20px;
+}
+
+.hidden{
+display:none;
+}
+
+footer{
+margin-top:40px;
+padding:20px;
+opacity:0.7;
+}
+
+.links{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+max-width:700px;
+margin:auto;
+margin-top:20px;
+}
+
+.linkCard{
+background:#ffffff20;
+padding:20px;
+border-radius:15px;
+text-decoration:none;
+color:white;
+font-size:18px;
+transition:0.3s;
+}
+
+.linkCard:hover{
+transform:scale(1.05);
+background:#ff4fa355;
+}
+
+.botonesLinks{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+max-width:800px;
+margin:auto;
+margin-top:20px;
+}
+
+.btnLink{
+text-decoration:none;
+background:linear-gradient(45deg,#ff4fa3,#ff85c0);
+color:white;
+padding:14px 22px;
+border-radius:30px;
+font-size:16px;
+transition:0.3s;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.btnLink:hover{
+transform:scale(1.1);
+background:linear-gradient(45deg,#ff2d8c,#ff6fb5);
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<header>
+
+<h1>🩵 Felices 5 Meses 🩵</h1>
+<p class="subtitle">Este pequeño universo es solo para nosotros y nadie más 😍</p>
+
+<div class="counter" id="contador"></div>
+
+</header>
+
+<div class="section">
+
+<h2>Amo esa linda carita</h2>
+
+<div class="gallery">
+
+<img src="foto1.jpeg">
+<img src="foto2.jpeg">
+<img src="foto3.jpeg">
+<img src="foto4.jpeg">
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Cosas que al recordar me siento afortunada</h2>
+
+<div class="timeline">
+
+<div>🌙 Todas las veces que nos hemos reído hasta que nos dolió el estómago.</div>
+<div>❤️ Esos momentos donde el tiempo parecía pasar más rápido contigo.</div>
+<div>🌙 Los mensajes que siempre terminan alegrándome el día.</div>
+<div>✨ Compartir canciones y pensar inmediatamente en ti cuando las escucho.</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Una carta para ti</h2>
+<br>
+
+<div class="envelope" onclick="abrirCarta()" id="envelope">
+
+<div class="flap"></div>
+
+<div class="letter">
+<p id="cartaTexto"></p>
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Juego: descubre los mensajes</h2>
+
+<button onclick="mensajeRandom()">Descubrir mensaje</button>
+
+<p id="mensajeJuego"></p>
+
+</div>
+
+<div class="section">
+
+<h2>Momento especial</h2>
+
+<button onclick="explosion()">Presiona cuando quieras decir TE AMO</button>
+
+</div>
+
+<div class="section">
+
+<h2>Cartas para ti. Mira cada una.</h2>
+
+<a href="https://gifft.me/o/l/mmhdvbndzwq6rgdzgrkom4zq" target="_blank" class="linkCard">
+💌 
+</a>
+
+<a href="https://gifft.me/es/o/mw/jc87wutl2udt2snawanhhhpw" target="_blank" class="linkCard">
+💌
+</a>
+
+<a href="https://gifft.me/o/hm/xjso9d9oqcireq7n748hg50z" target="_blank" class="linkCard">
+💌
+</a>
+
+</div>
+
+</div>
+<div class="section">
+
+<h2>Pequeñas sorpresas para ti</h2>
+<p>Haz clic en cada una 👀</p>
+
+<div class="botonesLinks">
+
+<a href="https://www.tlanex.com/demo/ea0215ce-6216-4102-a6aa-1e86903a7b90" target="_blank" class="btnLink"> Algo lindo para ti</a>
+
+<a href="https://www.tlanex.com/demo/40058dab-8e8b-4c13-85d9-0cdc5d4f221e" target="_blank" class="btnLink">🌟 Otro detalle bonito</a>
+
+<a href="https://www.tlanex.com/demo/0591e7ff-0a5c-4535-b5d8-ccaa0cff0dff" target="_blank" class="btnLink"> juega JAJAJAJ🩵</a>
+
+</div>
+
+</div>
+
+<footer>
+Hecho con mucho amor ❤️
+</footer>
+
+<script>
+
+let inicio=new Date("08-10-2025");
+
+function actualizar(){
+
+let ahora=new Date();
+let diff=ahora-inicio;
+
+let dias=Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("contador").innerHTML=
+"Llevamos "+dias+" días juntos ✨";
+
+}
+
+setInterval(actualizar,1000);
+
+function corazones(){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),8000);
+
+}
+
+setInterval(corazones,300);
+
+function abrirCarta(){
+
+document.getElementById("envelope").classList.toggle("open");
+
+}
+
+let texto="Gracias por estos cinco meses contigo. Puede parecer poco tiempo para algunos, pero para mí han sido meses llenos de momentos que guardo con mucho cariño. Me gusta cómo todo se siente más bonito cuando estamos juntos, cómo una simple conversación contigo puede cambiar mi día, y cómo poco a poco te has vuelto una persona muy importante para mí.";
+
+let i=0;
+
+function escribir(){
+
+if(i<texto.length){
+
+document.getElementById("cartaTexto").innerHTML+=texto.charAt(i);
+
+i++;
+
+setTimeout(escribir,40);
+
+}
+
+}
+
+setTimeout(escribir,1500);
+
+let mensajes=[
+"Me encanta tu sonrisa",
+"Eres una persona increíble",
+"Gracias por hacer mi vida más bonita",
+"Contigo todo se siente especial",
+"Te amo mucho con demasiado"
+];
+
+function mensajeRandom(){
+
+let r=Math.floor(Math.random()*mensajes.length);
+
+document.getElementById("mensajeJuego").innerHTML=mensajes[r];
+
+}
+
+function explosion(){
+
+for(let i=0;i<80;i++){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize="30px";
+heart.style.animationDuration="4s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),4000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
